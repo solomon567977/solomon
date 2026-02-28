@@ -1529,9 +1529,9 @@ export default function App() {
         <p className="text-slate-500 text-sm font-medium mb-4">© 2026 Secret Hearts University. Made with love for the dreamers.</p>
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
-          <div className={`w-2 h-2 rounded-full ${(import.meta as any).env.VITE_SUPABASE_URL ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
+          <div className={`w-2 h-2 rounded-full ${isSupabaseConfigured ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-            {(import.meta as any).env.VITE_SUPABASE_URL ? 'Supabase Connected' : 'Supabase: Waiting for Keys'}
+            {isSupabaseConfigured ? 'Supabase Connected' : 'Supabase: Waiting for Keys'}
           </span>
         </div>
       </footer>
