@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-cursive: "Dancing Script", cursive;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-primary: var(--primary-color, #d02525);
+  --color-bg-light: var(--bg-color, #f8f6f6);
+  --color-wine: #4c0519;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light text-slate-900 transition-colors duration-500;
+    font-family: var(--font-family, "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif);
+  }
+  
+  .font-cursive {
+    font-family: "Dancing Script", cursive;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .dark {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-xl shadow-primary/5;
+  }
+  
+  .dark .glass-card {
+    @apply bg-slate-900/70 border-white/10 shadow-black/20;
+  }
+
+  .wine-theme .glass-card {
+    @apply bg-wine/40 border-white/10 shadow-wine/20;
+    backdrop-filter: blur(20px);
+  }
+  
+  .dark {
+    @apply text-slate-100;
+  }
+
+  .dark .text-slate-900 { @apply text-slate-100; }
+  .dark .text-slate-800 { @apply text-slate-200; }
+  .dark .text-slate-700 { @apply text-slate-300; }
+  .dark .text-slate-600 { @apply text-slate-400; }
+  .dark .bg-white { @apply bg-slate-900; }
+  .dark .bg-slate-50 { @apply bg-slate-800; }
+  .dark .bg-slate-100 { @apply bg-slate-800; }
+  .dark .border-slate-100 { @apply border-slate-700; }
+  .dark .border-slate-200 { @apply border-slate-700; }
+  
+  .wine-theme {
+    @apply text-rose-100;
+  }
+
+  .wine-theme .text-slate-900, 
+  .wine-theme .text-slate-800,
+  .wine-theme .text-slate-700 {
+    @apply text-rose-100;
+  }
+
+  .wine-theme .bg-white,
+  .wine-theme .bg-slate-50 {
+    @apply bg-wine/60;
+  }
+
+  .romantic-gradient {
+    background: linear-gradient(135deg, var(--gradient-start, #fef2f2) 0%, var(--gradient-mid, #fee2e2) 50%, var(--gradient-end, #fecaca) 100%);
+  }
+
+  .stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration, 3s) infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: var(--opacity, 0.7); transform: scale(1.2); }
+  }
+}
